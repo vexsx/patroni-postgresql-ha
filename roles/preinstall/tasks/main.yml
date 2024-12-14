@@ -1,0 +1,39 @@
+---
+# tasks file for preinstall
+
+- name: Update apt chache
+  apt:
+    update_cache: yes
+
+- name: Upgrade packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install packages
+  apt:
+    pkg:
+      - python3-pip
+      - python3-dev
+      - libpq-dev
+      - gcc
+      - jq
+      - curl
+      - git
+      - vim
+      - nload
+    state: present
+
+- name: Add hosts to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item].private_ip }} {{ item }}"
+    state: present
+  loop: "{{ groups['all'] }}"
+  when: hostvars[item].private_ip is defined
+
+- name: Create a patroni directory if it does not exist
+  file:
+    path: /data/
+    state: directory
+    mode: '0755'
