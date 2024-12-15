@@ -56,4 +56,4 @@
     dest: /data/docker/docker-compose.yml
 
 - name: Up ETCD docker compose
-  shell: docker compose -f /data/docker/docker-compose.yml up -d
+  shell: docker-compose -f /data/docker/docker-compose.yml up -d
