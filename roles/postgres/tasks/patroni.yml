@@ -24,6 +24,9 @@
   template:
     src: patroni.yml.j2
     dest: /etc/patroni.yml
+    owner: patroni 
+    group: patroni
+    mode: '0600'
 
 - name: Copy patroni service file
   copy:
