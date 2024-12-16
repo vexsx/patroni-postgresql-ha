@@ -11,28 +11,19 @@ bootstrap:
     ttl: 30
     loop_wait: 10
     retry_timeout: 10
-    maximum_lag_on_failover: 1048576 
+    maximum_lag_on_failover: 1048576
     postgresql:
-      use_pg_rewind: true
-      use_slots: true
-      parameters:
-        max_connections: 100
-        shared_buffers: '256MB'
-        effective_cache_size: '768MB'
-        wal_level: replica
-        wal_keep_size: '1GB'
-        max_wal_senders: 10
-        hot_standby: 'on'
+    use_pg_rewind: true
   initdb:
     - encoding: UTF8
     - data-checksums
   pg_hba:
-    - host replication replicator   127.0.0.1/32 md5
+    - host replication replicator   127.0.0.1/32 scram-sha-256
     # Managed by Ansible
   {% for host in groups['psql'] %}
-  - host replication replicator {{ hostvars[host]['private_ip'] }}/0 md5
+  - host replication replicator {{ hostvars[host]['private_ip'] }}/0 scram-sha-256
   {% endfor %}
-  - host all all   0.0.0.0/0   md5
+  - host all all   0.0.0.0/0   scram-sha-256
   users:
     admin:
        password: admin
