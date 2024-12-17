@@ -24,3 +24,12 @@
   serial: 1
   any_errors_fatal: true
   tags: [haproxy]
+
+- hosts: ha
+  roles:
+    - role: keepalived
+  gather_facts: yes
+  remote_user: root
+  serial: 1
+  any_errors_fatal: true
+  tags: [keepalived]

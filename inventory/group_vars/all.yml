@@ -13,7 +13,7 @@ docker_gpg_key_url: "https://download.docker.com/linux/ubuntu/gpg"
 docker_gpg_key_path: "/etc/apt/keyrings/docker.gpg"
 docker_apt_repo: "https://download.docker.com/linux/ubuntu"
 
-# VRIP HAPRoXY
+# VRIP HAPRoXY 
 haproxy_vip: "192.168.2.254"
 
 # Pg_bouncer
