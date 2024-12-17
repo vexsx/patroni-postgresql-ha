@@ -1,4 +1,4 @@
-```markdown
+
 # Patroni PostgreSQL HA
 
 ![License](https://img.shields.io/github/license/vexsx/patroni-postgresql-ha)
