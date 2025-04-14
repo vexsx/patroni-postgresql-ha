@@ -33,3 +33,12 @@
   serial: 1
   any_errors_fatal: true
   tags: [keepalived]
+
+- hosts: ha
+  roles:
+    - role: pgbouncer
+  gather_facts: yes
+  remote_user: root
+  serial: 1
+  any_errors_fatal: true
+  tags: [pgbouncer]
